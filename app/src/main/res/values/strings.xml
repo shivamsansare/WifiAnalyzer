@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">WifiAnalyzer</string>
+    <string name="text">Wifi Strength</string>
+    <string name="text1">Wifi Data</string>
+</resources>
