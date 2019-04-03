@@ -51,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
                 WifiInfo info = manager.getConnectionInfo();
                 int ip = info.getIpAddress();
                 str =   "\nSSID = "+info.getSSID()+"\nRSSI = +"+info.getRssi()+"\nMacAddress = "+info.getMacAddress()+"\nBSSID = "+info.getBSSID()+"\nIpAddress = "+info.getIpAddress()+"\nNetworkID = "+info.getNetworkId()+"\n";
-                str2 = str + str2;
 
                 if(ip == 0){
                     String str1 = "Please switch on the Wifi!";
@@ -59,27 +58,25 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else{
                     text.setText(str);
-                }
+                    File file = new File(getApplicationContext().getFilesDir(),"WiFi");
+                    if(!file.exists())
+                    {
+                        file.mkdir();
+                    }
 
-                File file = new File(getApplicationContext().getFilesDir(),"WiFi");
-                if(!file.exists())
-                {
-                    file.mkdir();
-                }
+                    try
+                    {
+                        File f = new File(file, "WifiData.txt");
+                        FileWriter writer = new FileWriter(f);
+                        writer.append(str);
+                        writer.flush();
+                        writer.close();
+                    }
+                    catch (Exception e)
+                    {
 
-                try
-                {
-                    File f = new File(file, "WifiData.txt");
-                    FileWriter writer = new FileWriter(f);
-                    writer.append(str2);
-                    writer.flush();
-                    writer.close();
+                    }
                 }
-                catch (Exception e)
-                {
-
-                }
-
             }
         });
 
