@@ -58,24 +58,24 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else{
                     text.setText(str);
-                    File file = new File(getApplicationContext().getFilesDir(),"WiFi");
-                    if(!file.exists())
-                    {
-                        file.mkdir();
-                    }
+                }
+                File file = new File(getApplicationContext().getFilesDir(),"WiFi");
+                if(!file.exists())
+                {
+                    file.mkdir();
+                }
 
-                    try
-                    {
-                        File f = new File(file, "WifiData.txt");
-                        FileWriter writer = new FileWriter(f);
-                        writer.append(str);
-                        writer.flush();
-                        writer.close();
-                    }
-                    catch (Exception e)
-                    {
+                try
+                {
+                    File f = new File(file, "WifiData.txt");
+                    FileWriter writer = new FileWriter(f);
+                    writer.append(str);
+                    writer.flush();
+                    writer.close();
+                }
+                catch (Exception e)
+                {
 
-                    }
                 }
             }
         });
@@ -92,9 +92,8 @@ public class MainActivity extends AppCompatActivity {
                     DataInputStream data = new DataInputStream(input);
                     BufferedReader br = new BufferedReader(new InputStreamReader(data));
                     String line;
-                    while((line = br.readLine())!=null)
-                    {
-                        str2 = str2 + line +"\n";
+                    while((line = br.readLine())!=null) {
+                            str2 = str2 + line + "\n";
                     }
                     text.setText(str2);
 
